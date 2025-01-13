@@ -1,0 +1,31 @@
+<h1>Update Issue</h1>
+<form class="updateIssueForm" method="post" id="updateIssueForm" action="./issues/<%= issue.iid %>/update">
+  <input type="hidden" id="issueIdInput" name="issueIid" value="">
+  <input type="hidden" id="actionInput" name="action" value="update">
+  <input type="hidden" id="stateInput" name="state" value="">
+  <div class="col-md-12">
+    <label class="form-label" for="titleInput">
+      Title
+    </label>
+    <textarea class="form-control" id="titleInput" name="title" placeholder="Update issue title here" required autofocus
+      rows="2"><%= issue?.title %></textarea>
+  </div>
+  <br>
+  <div class="col-md-12">
+    <label class="form-label" for="descriptionInput">
+      Description
+    </label>
+    <textarea class="form-control" id="descriptionInput" name="description" placeholder="Update issue description here"
+      required autofocus rows="5"><%= issue?.description %></textarea>
+  </div>
+
+  <div class="col-12">
+    <button type="submit" name="action" id="updateButton" value="update" class="btn btn-primary">Update</button>
+    <% if(issue.state==='closed' ) { %>
+      <button type="submit" name="action" value="reopen" id="openButton" class="btn btn-primary">Open Issue</button>
+      <% } else { %>
+        <button type="submit" name="action" value="close" id="closeButton" class="btn btn-primary">Close Issue</button>
+        <% } %>
+  </div>
+  <br>
+</form>
